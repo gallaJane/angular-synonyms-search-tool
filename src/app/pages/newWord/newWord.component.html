@@ -1,0 +1,60 @@
+<div class="box-content">
+    <div class="box">
+        <form [formGroup]="newWordForm" (ngSubmit)="save(newWordForm.value, newWordForm.valid)">
+            <div class="synonym-header">
+                <h1>Word Form</h1>
+                <div style="align-content: flex-end;">
+                    <button class="cancel-btn" (click)="cancel()">Cancel</button>
+                    <button class="save-btn" type="submit"> Save</button>
+                </div>
+            </div>
+            <p style="margin-bottom: 24px;">
+                Here you can define a new word with it's synonyms.
+            </p>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <input formControlName="word" placeholder="Enter word">
+                <mat-error *ngIf="isSubmitted" class="text-danger">
+                    <div *ngIf="word.hasError('required')">
+                        Word is required
+                    </div>
+                </mat-error>
+                <div>
+
+                    <div class="definition-box" formArrayName="meanings"
+                        *ngFor="let item of meaningsFormArr.controls; let i = index">
+                        <div [formGroupName]="i">
+                            <div style="display: flex; flex-direction: row;">
+                                <div class="select">
+                                    <select id="standard-select" formControlName="partOfSpeech">
+                                        <option *ngFor="let speech of partOfSpeech" [value]="speech.id">
+                                            {{speech.name}}
+                                        </option>
+                                    </select>
+                                    <span class="focus"></span>
+                                </div>
+
+                                <button class="icon-button" *ngIf="meanings && meanings.length> 1" (click)="remove(i)">
+                                    <img style="width: 0.8em; height: 0.8em;" src="/assets/delete.svg" alt="Delete" />
+                                </button>
+                            </div>
+
+                            <div class="inner-box">
+                                <div style="display:flex;">
+                                    <div style="flex-grow: 2;">
+                                        <input formControlName="text" matInput placeholder="Definition">
+                                        <input formControlName="synonyms" matInput placeholder="Synonyms">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="icon-button green-btn" style="margin-top: 16px;" (click)="addItem()">
+                    <img style="width: 1.2em; height: 1.2em;" src="/assets/add.svg" alt="Add" />
+                </button>
+
+            </div>
+        </form>
+    </div>
+</div>

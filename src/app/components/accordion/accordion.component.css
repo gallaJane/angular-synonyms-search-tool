@@ -1,0 +1,94 @@
+.accordion {
+    width: 100%;
+    margin: auto;
+    background: #fff;
+    border-radius: 4px;
+    padding-inline: 0;
+  }
+  
+  .accordion .menu {
+    position: relative;
+    padding: 15px 15px 15px 15px;
+    color: #4d4d4d;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .accordion li:last-child .menu {
+    border-bottom: 0;
+  }
+  
+  .accordion li i {
+    position: absolute;
+    top: 1.2rem;
+    left: 1rem;
+    color: #595959;
+    transition: all 0.4s ease;
+  }
+  
+  .accordion li i.fa-chevron-down {
+    right: 1rem;
+    left: auto;
+  }
+  
+  .accordion li.active i.fa-chevron-down {
+    transform: rotate(180deg);
+  }
+  
+  .accordion li.active .menu {
+    color: #b63b4d;
+  }
+  
+  .accordion li.active i {
+    color: #b63b4d;
+  }
+  
+
+  .accordion li.active .submenu {
+
+  }
+  
+  .submenu {
+    height: 0;
+    overflow: hidden;
+    background: #fff;
+    font-size: 14px;
+    transition: height 0.4s ease;
+  }
+  
+  .submenu li {
+    border-bottom: 1px solid #4b4a5e;
+  }
+  
+  .accordion li:last-child .submenu {
+    border-radius: 0 0 4px 4px;
+  }
+  
+  .accordion li:last-child .submenu li:last-child {
+    border-bottom: 0;
+  }
+  
+  .submenu a {
+    padding: 12px;
+  }
+  
+
+  .synonym-chip{
+    border: 1px solid rgba(255, 133, 92, 0.7);
+    cursor: pointer;
+    background-color: transparent !important;
+  }
+
+   .synonym-chip a{
+    color: #FF855C;
+  }
+
+  .mat-chip-list-wrapper > .synonym-chip:hover{
+    background: rgb(248, 189, 169);
+  }

@@ -18,6 +18,12 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
+    "paths": {
+      "@api/pages/*": ["src/app/pages/*"],
+      "@api/components/*": ["src/app/components/*"],
+      "@api/services/*": ["src/app/services/*"],
+      "@api/models/*": ["src/app/models/*"]
+    },
     "lib": [
       "es2020",
       "dom"

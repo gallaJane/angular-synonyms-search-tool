@@ -1,0 +1,18 @@
+<div class="box">
+  <img class="synonym-image" src="../../../assets/surfing.svg" alt="Book_Reading" />
+  <h4 class="synonyms-h4">4 DefSyn </h4>
+  <p class="subtitle">Find words and their synonyms</p>
+  <div class="search-field">
+    <div class="search">
+      <img style="width: 1.8em; height: 1.8em;" src="/assets/search-icon.svg" alt="Down" />
+      <input #searchTerm type="text" class="searchTerm" (keyup.enter)="searchFor(searchTerm.value)"
+        placeholder="search">
+    </div>
+    <div *ngIf="isError1" class="error">
+      Please enter a valid word. <br />Words should contain more than one letter and no spaces.
+    </div>
+    <div *ngIf="isError2" class="error">
+      Please enter a word.
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="box-content">
+  <div class="wrap" *ngIf="wordItems">
+    <div class="synonym-header">
+      <button class="icon-button" (click)="back()">
+        <img style="width: 1.2em; height: 1.2em;" src="/assets/back.svg" alt="Back" />
+      </button>
+    </div>
+    <div class="definition-header">
+      <h5>{{paramWord}}</h5>
+      <button class="icon-button green-btn" (click)="play()">
+        <img style="width: 1.2em; height: 1.2em;" src="/assets/audio.svg" alt="Back" />
+      </button>
+    </div>
+
+    <div class="row">
+      <div class="definition-box" *ngFor="let mean of meanings">
+        <h6>{{mean.partOfSpeech}}</h6>
+        <br>
+        <accordion [options]="options" [definitions]="mean.definitions">
+        </accordion>
+        <br>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="wrap" *ngIf="!wordItems">
+    <div class="box">
+      <img class="synonym-image" src="../../../assets/not_found.svg" alt="Not-found" />
+      <p class="purple-title">No results found for '{{paramWord}}'</p>
+      <p>Please, search for words not phrases</p>
+      <div class="synonym-header">
+        <button class="icon-button" style="margin-top: 18px; margin-right: 18px;" (click)="back()">
+          <img style="width: 1.2em; height: 1.2em;" src="/assets/back.svg" alt="Back" />
+        </button>
+        <button class="save-btn" (click)="addWord()"> Add Word</button>
+      </div>
+    </div>
+  </div>
+</div>

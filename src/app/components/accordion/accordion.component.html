@@ -1,0 +1,31 @@
+<div style="display: block"> 
+<ul id="accordion" class="accordion">
+    <li class="list-item"
+      *ngFor="let defin of definitions; let i = index"
+      [class.active]="defin.active"
+    >
+      <div class="menu" (click)="toggle(i)">
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+          <p>{{i+1}}.</p>
+          <p>{{ defin.definition }}</p> 
+        </div>
+        <img style="width: 0.8em; height: 0.8em;" src="/assets/down.svg" alt="Down" />
+      </div>
+
+      
+      <ul
+        class="submenu"
+        #submenu
+        [style.height.px]="defin.active ? submenu.scrollHeight : 0"
+      >
+       <p class="subtitle" style="font-weight: 800;" *ngIf="defin.synonyms.length;">Synonyms</p>  
+            <mat-chip-list>
+                <mat-chip *ngFor="let synonym of defin.synonyms" class="synonym-chip" selected>
+                    <a (click)="searchFor(synonym.toString())">{{ synonym }}</a>
+                </mat-chip>
+            </mat-chip-list>
+            <p class="subtitle" style="font-weight: 800;" *ngIf="!defin.synonyms.length">There are no synonyms.</p>
+      </ul>
+    </li>
+  </ul>
+</div>
