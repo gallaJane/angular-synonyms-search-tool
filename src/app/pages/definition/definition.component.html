@@ -1,5 +1,5 @@
 <div class="box-content">
-  <div class="wrap" *ngIf="wordItems">
+  <div class="wrap" *ngIf="wordItems; else loading">
     <div class="synonym-header">
       <button class="icon-button" (click)="back()">
         <img style="width: 1.2em; height: 1.2em;" src="/assets/back.svg" alt="Back" />
@@ -23,8 +23,8 @@
     </div>
   </div>
 
-
-  <div class="wrap" *ngIf="!wordItems">
+<ng-template #loading>
+  <div class="wrap">
     <div class="box">
       <img class="synonym-image" src="../../../assets/not_found.svg" alt="Not-found" />
       <p class="purple-title">No results found for '{{paramWord}}'</p>
@@ -37,4 +37,6 @@
       </div>
     </div>
   </div>
+</ng-template>
+
 </div>
